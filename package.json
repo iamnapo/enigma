@@ -1,0 +1,64 @@
+{
+	"name": "@iamnapo/enigma",
+	"version": "0.0.0",
+	"description": "Create secure ciphers easily",
+	"keywords": [
+		"enigma",
+		"cipher",
+		"encrypt",
+		"decrypt",
+		"AES"
+	],
+	"homepage": "https://github.com/iamnapo/enigma#readme",
+	"bugs": {
+		"url": "https://github.com/iamnapo/enigma/issues"
+	},
+	"repository": "github:iamnapo/enigma",
+	"license": "MIT",
+	"author": {
+		"name": "Napoleon-Christos Oikonomou",
+		"email": "napoleonoikon@gmail.com",
+		"url": "https://iamnapo.me"
+	},
+	"type": "module",
+	"exports": "./dist/index.js",
+	"types": "./dist/index.d.ts",
+	"files": [
+		"dist/index.js",
+		"dist/index.d.ts"
+	],
+	"scripts": {
+		"build": "tsc",
+		"lint": "eslint . --ext .ts --cache",
+		"prepare": "npm run build",
+		"test": "npm run lint && ava"
+	},
+	"eslintConfig": {
+		"extends": "iamnapo/typescript",
+		"ignorePatterns": "dist"
+	},
+	"ava": {
+		"timeout": "1m",
+		"typescript": {
+			"rewritePaths": {
+				"/": "dist/"
+			},
+			"compile": "tsc"
+		}
+	},
+	"devDependencies": {
+		"@ava/typescript": "^3.0.1",
+		"@iamnapo/tsconfig": "^2.0.0",
+		"@types/node": "^18.11.9",
+		"ava": "^5.1.0",
+		"eslint": "^8.28.0",
+		"eslint-config-iamnapo": "^28.0.0",
+		"typescript": "^4.9.3"
+	},
+	"engines": {
+		"node": ">=16"
+	},
+	"publishConfig": {
+		"access": "public"
+	}
+}
