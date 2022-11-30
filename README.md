@@ -7,13 +7,13 @@
 ## Install
 
 ```sh
-$ npm i @iamnapo/enigma
+npm i @iamnapo/enigma
 ```
 
 ## Usage
 
 ```js
-import {encrypt, decrypt} from "@iamnapo/enigma";
+import { encrypt, decrypt } from "@iamnapo/enigma";
 
 encrypt("some secret", { encryptionKey: "some-key" }); // => 93fd2e92833e{...}82253f9aa4f008
 decrypt("93fd2e92833e{...}82253f9aa4f008", { encryptionKey: "some-key" }); // => "some secret
@@ -27,7 +27,7 @@ Encrypt text using the [aes-256-cbc](https://en.wikipedia.org/wiki/Block_cipher_
 
 > Note: A random Initialization Vector is created and encoded inside the cipher, so each time the result is different.
 
-### decrypr(input, options)
+### decrypt(input, options)
 
 Decrypt text that was encrypted with [`encrypt`](#encryptinput-options).
 
