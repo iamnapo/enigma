@@ -2,7 +2,7 @@
 
 > Create secure ciphers easily
 
-[![build](https://badges.iamnapo.me/ci/iamnapo/enigma)](https://github.com/iamnapo/enigma/actions) [![npm](https://badges.iamnapo.me/npm/@iamnapo/enigma)](https://www.npmjs.com/package/@iamnapo/enigma) [![size](https://badges.iamnapo.me/size/@iamnapo/enigma)](https://bundlephobia.com/result?p=@iamnapo/enigma)
+[![build](https://badges.iamnapo.me/ci/iamnapo/enigma)](https://github.com/iamnapo/enigma/actions) [![npm](https://badges.iamnapo.me/npm/@iamnapo/enigma)](https://www.npmjs.com/package/@iamnapo/enigma)
 
 ## Install
 
@@ -15,8 +15,9 @@ npm i @iamnapo/enigma
 ```js
 import { encrypt, decrypt } from "@iamnapo/enigma";
 
-encrypt("some secret", { encryptionKey: "some-key" }); // => 93fd2e92833e{...}82253f9aa4f008
-decrypt("93fd2e92833e{...}82253f9aa4f008", { encryptionKey: "some-key" }); // => "some secret
+encrypt("some secret", { encryptionKey: "some-key" }); // => 91ysVc3IbexEwRigsMHTvwRwcuG5rMMWhJ6IkF3iq84=
+decrypt("91ysVc3IbexEwRigsMHTvwRwcuG5rMMWhJ6IkF3iq84=", { encryptionKey: "some-key" }); // => "some secret
+encrypt("some secret", { encryptionKey: "some-key", encoding: "hex" }); // => 93fd2e92833e{...}82253f9aa4f008
 ```
 
 ## API
@@ -41,10 +42,15 @@ Input text.
 
 Type: `object`
 
-You must specify the below options.
-
 ##### encryptionKey
 
 Type: `string | Buffer | TypedArray | DataView`
 
 Encryption key to use for encryption/decryption.
+
+##### encoding
+
+Type: `"utf16le" | "ucs2" | "ucs-2" | "base64" | "base64url" | "latin1" | "binary" | "hex"`\
+Default: `"base64"`
+
+Encoding to use for encryption/decryption.

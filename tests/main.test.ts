@@ -8,6 +8,7 @@ test("main", (t) => {
 	t.not(encrypt("yo", { encryptionKey: "123" }), encrypt("yo", { encryptionKey: "123" }));
 	const randomText = crypto.randomBytes(20).toString("hex");
 	const randomEncryptionKey = crypto.randomBytes(20).toString("hex");
-	t.is(decrypt(encrypt(randomText, { encryptionKey: randomEncryptionKey }), { encryptionKey: randomEncryptionKey }), randomText);
+	const opts = { encryptionKey: randomEncryptionKey };
+	t.is(decrypt(encrypt(randomText, opts), opts), randomText);
+	t.is(decrypt(encrypt(randomText, { ...opts, encoding: "hex" }), { ...opts, encoding: "hex" }), randomText);
 });
-
