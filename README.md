@@ -13,20 +13,22 @@ npm i @iamnapo/enigma
 ## Usage
 
 ```js
-import { encrypt, decrypt } from "@iamnapo/enigma";
+import { encrypt, decrypt, generateEncryptionKey } from "@iamnapo/enigma";
 
 encrypt("some secret", { encryptionKey: "some-key" }); // => 91ysVc3IbexEwRigsMHTvwRwcuG5rMMWhJ6IkF3iq84=
 decrypt("91ysVc3IbexEwRigsMHTvwRwcuG5rMMWhJ6IkF3iq84=", { encryptionKey: "some-key" }); // => "some secret
 encrypt("some secret", { encryptionKey: "some-key", encoding: "hex" }); // => 93fd2e92833e{...}82253f9aa4f008
+
+generateEncryptionKey(); // => f4Gy8jKRT4cM5+5XzL5ZtS5GHjgCmYw5BmHy4P4EJj4=
 ```
 
 ## API
 
 ### encrypt(input, options)
 
-Encrypt text using the [aes-256-cbc](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation) encryption algorithm.
+Encrypt text using the [aes-256-gcm](https://en.wikipedia.org/wiki/Galois/Counter_Mode) encryption algorithm.
 
-> Note: A random Initialization Vector is created and encoded inside the cipher, so each time the result is different.
+> Note: A random Initialization Vector and a random salt are created and encoded inside the cipher, so each time the result is different.
 
 ### decrypt(input, options)
 
@@ -54,3 +56,14 @@ Type: `"utf16le" | "ucs2" | "ucs-2" | "base64" | "base64url" | "latin1" | "binar
 Default: `"base64"`
 
 Encoding to use for encryption/decryption.
+
+### generateEncryptionKey(length)
+
+Utility function to generate a random encryption key using a cryptographically secure random number generator.
+
+#### length
+
+Type: `number`\
+Default: `32`
+
+Length of the generated encryption key in bytes.
