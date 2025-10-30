@@ -16,7 +16,7 @@ npm i @iamnapo/enigma
 import { encrypt, decrypt, generateEncryptionKey } from "@iamnapo/enigma";
 
 encrypt("some secret", { encryptionKey: "some-key" }); // => 91ysVc3IbexEwRigsMHTvwRwcuG5rMMWhJ6IkF3iq84=
-decrypt("91ysVc3IbexEwRigsMHTvwRwcuG5rMMWhJ6IkF3iq84=", { encryptionKey: "some-key" }); // => "some secret
+decrypt("91ysVc3IbexEwRigsMHTvwRwcuG5rMMWhJ6IkF3iq84=", { encryptionKey: "some-key" }); // => "some secret"
 encrypt("some secret", { encryptionKey: "some-key", encoding: "hex" }); // => 93fd2e92833e{...}82253f9aa4f008
 
 generateEncryptionKey(); // => f4Gy8jKRT4cM5+5XzL5ZtS5GHjgCmYw5BmHy4P4EJj4=

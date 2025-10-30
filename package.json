@@ -14,7 +14,10 @@
 	"bugs": {
 		"url": "https://github.com/iamnapo/enigma/issues"
 	},
-	"repository": "github:iamnapo/enigma",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/iamnapo/enigma.git"
+	},
 	"license": "MIT",
 	"author": {
 		"name": "Napoleon-Christos Oikonomou",
@@ -22,44 +25,31 @@
 		"url": "https://iamnapo.me"
 	},
 	"type": "module",
-	"exports": "./dist/index.js",
-	"types": "./dist/index.d.ts",
+	"exports": "./distribution/index.js",
+	"types": "./distribution/index.d.ts",
 	"files": [
-		"dist/index.js",
-		"dist/index.d.ts"
+		"distribution",
+		"!distribution/tests"
 	],
 	"scripts": {
 		"build": "tsc",
-		"lint": "eslint . --ext .ts --cache",
-		"prepare": "npm run build",
-		"test": "npm run lint && ava"
-	},
-	"eslintConfig": {
-		"extends": "iamnapo/typescript",
-		"ignorePatterns": "dist"
-	},
-	"ava": {
-		"timeout": "1m",
-		"typescript": {
-			"rewritePaths": {
-				"/": "dist/"
-			},
-			"compile": "tsc"
-		}
+		"lint": "eslint --cache",
+		"prepare": "pnpm build",
+		"test": "pnpm lint && pnpm build && node --test distribution/tests/*.js"
 	},
 	"devDependencies": {
-		"@ava/typescript": "^4.0.0",
-		"@iamnapo/tsconfig": "^3.0.0",
-		"@types/node": "^18.15.11",
-		"ava": "^5.2.0",
-		"eslint": "^8.37.0",
-		"eslint-config-iamnapo": "^29.1.0",
-		"typescript": "^5.0.4"
+		"@iamnapo/tsconfig": "^8.0.0",
+		"@types/node": "^24.9.2",
+		"eslint": "^9.38.0",
+		"eslint-config-iamnapo": "^41.0.0",
+		"typescript": "^5.9.3"
 	},
+	"packageManager": "pnpm@10.20.0+sha512.cf9998222162dd85864d0a8102e7892e7ba4ceadebbf5a31f9c2fce48dfce317a9c53b9f6464d1ef9042cba2e02ae02a9f7c143a2b438cd93c91840f0192b9dd",
 	"engines": {
-		"node": ">=16"
+		"node": ">=22"
 	},
 	"publishConfig": {
-		"access": "public"
+		"access": "public",
+		"provenance": true
 	}
 }
