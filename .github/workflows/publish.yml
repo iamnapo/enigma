@@ -24,6 +24,9 @@ jobs:
           node-version: 24
           registry-url: "https://registry.npmjs.org"
 
+      - name: 📥 Download deps
+        run: pnpm i
+
       - name: 🚀 Release to npm
         run: pnpm publish --no-git-checks
 
